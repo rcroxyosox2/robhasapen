@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useState, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { btcWalletOnCoinBase, contactEmail } from '../constants';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import btcAddrImg from '../images/btcaddr.png';
 
 const EmailButtonStyle = styled.button`
@@ -56,6 +57,7 @@ const BTCAddressInputStyle = styled.input`
 const BTCDetails = ({ title, message: messageFromProps }) => {
 
   const [copiedMessageIn, setCopiedMessageIn] = useState(false);
+  const [cbValue, setCbValue] = useState(null);
   const copiedMessageTimout = useRef();
   const flagAnimationTime = 2000;
 
@@ -69,16 +71,14 @@ const BTCDetails = ({ title, message: messageFromProps }) => {
   const handleAddressInputlick = (e) => {
     e.stopPropagation();
     e.target.select();
-    navigator?.clipboard?.writeText(e.target.value);
+    setCbValue(e.target.value);
 
     if (copiedMessageTimout.current) {
-      console.log('nope')
       return;
     }
 
     setCopiedMessageIn(true);
     copiedMessageTimout.current = setTimeout(() => {
-      console.log('trying.');
       setCopiedMessageIn(false);
       copiedMessageTimout.current = null;
     }, flagAnimationTime);
@@ -102,7 +102,9 @@ const BTCDetails = ({ title, message: messageFromProps }) => {
       <CSSTransition in={copiedMessageIn} timeout={flagAnimationTime}>
         <FlagStyle>Copied to clipboard</FlagStyle>
       </CSSTransition>
-      <BTCAddressInputStyle value={btcWalletOnCoinBase} onClick={handleAddressInputlick} readOnly />
+      <CopyToClipboard text={cbValue}>
+        <BTCAddressInputStyle value={btcWalletOnCoinBase} onClick={handleAddressInputlick} readOnly />
+      </CopyToClipboard>
       <section>
         <img src={btcAddrImg} />
         <aside>
