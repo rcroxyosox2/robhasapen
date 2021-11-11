@@ -69,7 +69,7 @@ const BTCDetails = ({ title, message: messageFromProps }) => {
   const handleAddressInputlick = (e) => {
     e.stopPropagation();
     e.target.select();
-    navigator.clipboard.writeText(e.target.value);
+    navigator?.clipboard?.writeText(e.target.value);
 
     if (copiedMessageTimout.current) {
       console.log('nope')
