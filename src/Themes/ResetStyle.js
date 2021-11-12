@@ -35,6 +35,7 @@ const ResetStyle = createGlobalStyle`
   input {
     ${appearance()};
     font-family: inherit;
+    border-radius: 0 !important;
   }
   _:-ms-fullscreen, :root body {
     height: 100vh;
