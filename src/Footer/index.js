@@ -6,6 +6,7 @@ import gramImg from '../images/gram.svg';
 import mailImg from '../images/mail.svg';
 import venmoImg from '../images/venmo.svg';
 import Container from '../Container';
+import mixins from '../Themes/mixins';
 import BTCDetails, { BTCDetailsStyle } from '../BTCDetails';
 
 import {
@@ -34,10 +35,16 @@ const FooterStyle = styled.footer`
         transform: translateX(-50%);
         border: 1px solid ${props => props.theme.colors.black};
         border-top: none;
+        box-shadow: 0 0 30px ${ props => mixins.rgba(props.theme.colors.black, 0.2) };
+        @media (max-width: 580px) {
+          left: -150%;
+        }
+        @media (max-width: 414px) {
+          left: -280%;
+        }
       }
     }
   }
-
 `;
 
 const IconStyle = styled.span.attrs({ role: 'img' })`

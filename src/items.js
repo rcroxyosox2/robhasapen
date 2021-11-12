@@ -10,7 +10,6 @@ const items = [
     img: dumbGunsImg,
     price: {
       usd: 200,
-      btc: 0.002,
     },
     size: {
       w: 18,
@@ -24,13 +23,13 @@ const items = [
     title: 'Old World Cowboy',
     img: oldWorldCowboyImg,
     price: {
-      usd: 50,
-      btc: 0.002,
+      usd: 80,
     },
     size: {
-      w: 18,
-      h: 24,
-    }
+      w: 11,
+      h: 14,
+    },
+    media: 'acrylic & spraypaint on canvas',
   },
 
   {
@@ -38,13 +37,13 @@ const items = [
     title: 'Wooden Horse',
     img: woodenHorseImg,
     price: {
-      usd: 50,
-      btc: 0.002,
+      usd: 200,
     },
     size: {
       w: 18,
       h: 24,
-    }
+    },
+    media: 'acrylic on canvas',
   },
 
   {
@@ -52,17 +51,17 @@ const items = [
     title: 'Gray Lady',
     img: grayLadyImg,
     price: {
-      usd: 50,
-      btc: 0.002,
+      usd: 80,
     },
     size: {
-      w: 18,
-      h: 24,
-    }
+      w: 11,
+      h: 14,
+    },
+    media: 'acrylic & spraypaint on canvas',
   }
 ];
 
 const getItemByKey = (key) => items.find((item) => item.key === key);
-const getSizeFromItem = (item) => `${item.size.w}x${item.size.h}in`
+const getSizeFromItem = (item) => `${item.size.w}x${item.size.h}`
 export { getItemByKey, getSizeFromItem };
 export default items;

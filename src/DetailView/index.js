@@ -6,6 +6,7 @@ import { BaseButtonStyle } from '../Button/styles';
 import BTCButton from '../Button/BTCButton';
 import EmailButton from '../Button/EmailButton';
 import InstaButton from '../Button/InstaButton';
+import { btcDiscountPerc } from '../constants';
 
 const DetailViewStyle = styled.div`
   display: flex;
@@ -101,16 +102,18 @@ const DetailView = ({ item: itemFromProps, closeModal }) => {
             <hr />
             <span>{getSizeFromItem(item)}</span>
           </li>
+          { item.media ? (
           <li>
             <span>Media</span>
             <hr />
-            <span>Some kind of media</span>
+            <span>{item.media}</span>
           </li>
+          ): null}
         </ul>
         <nav>
           <h4>Purchase:</h4>
-          <VenmoButton price={100} />
-          <BTCButton price={0.002} title={item.title} />
+          <VenmoButton price={item.price.usd} />
+          <BTCButton price={item.price.usd - (item.price.usd * (btcDiscountPerc * 0.01))} title={item.title} />
         </nav>
         <nav>
           <h4>Contact:</h4>

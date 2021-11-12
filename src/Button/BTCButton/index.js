@@ -54,7 +54,7 @@ const BTCButton = ({ price, title }) => {
       <BTCButonStyle onClick={handleClick} opened={buttonOpen} data-message={`Pay with Bitcoin and get a ${btcDiscountPerc}% discount`}>
         <span>
           <img src={btcImg} />
-          <span>B{price} BTC</span>
+          <span>${price} USD</span>
         </span>
         { buttonOpen ? <BTCDetails title={title} /> : null}
       </BTCButonStyle>

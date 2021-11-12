@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { useState, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { btcWalletOnCoinBase, contactEmail } from '../constants';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import btcAddrImg from '../images/btcaddr.png';
 
 const EmailButtonStyle = styled.button`
@@ -14,6 +13,7 @@ const EmailButtonStyle = styled.button`
 
 export const BTCDetailsStyle = styled.span.attrs({ className: 'BTCDetailsStyle' })`
   display: block;
+  background: ${props => props.theme.colors.white};
   img {
     max-width: 46%;
     margin-bottom: 1em;
@@ -71,17 +71,19 @@ const BTCDetails = ({ title, message: messageFromProps }) => {
   const handleAddressInputlick = (e) => {
     e.stopPropagation();
     e.target.select();
-    setCbValue(e.target.value);
-
-    if (copiedMessageTimout.current) {
+    const prompt = window.prompt('Copy the BTC address below', e.target.value);
+    if (!prompt) {
       return;
     }
+    // if (copiedMessageTimout.current) {
+    //   return;
+    // }
 
-    setCopiedMessageIn(true);
-    copiedMessageTimout.current = setTimeout(() => {
-      setCopiedMessageIn(false);
-      copiedMessageTimout.current = null;
-    }, flagAnimationTime);
+    // setCopiedMessageIn(true);
+    // copiedMessageTimout.current = setTimeout(() => {
+    //   setCopiedMessageIn(false);
+    //   copiedMessageTimout.current = null;
+    // }, flagAnimationTime);
   }
 
   const handleEmailClick = (e) => {
@@ -102,9 +104,7 @@ const BTCDetails = ({ title, message: messageFromProps }) => {
       <CSSTransition in={copiedMessageIn} timeout={flagAnimationTime}>
         <FlagStyle>Copied to clipboard</FlagStyle>
       </CSSTransition>
-      <CopyToClipboard text={cbValue}>
         <BTCAddressInputStyle value={btcWalletOnCoinBase} onClick={handleAddressInputlick} readOnly />
-      </CopyToClipboard>
       <section>
         <img src={btcAddrImg} />
         <aside>

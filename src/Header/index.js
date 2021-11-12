@@ -17,6 +17,7 @@ const HeaderStyle = styled.header`
   align-items: center;
   justify-content: center;
   padding-top: 11vh;
+  position: relative;
   &:before, &:after {
     content: "for sale";
     text-transform: uppercase;
@@ -27,21 +28,21 @@ const HeaderStyle = styled.header`
     animation-fill-mode: both;
   }
   &:before {
-    margin-left: -43vw;
+    left: 20%;
     transform: rotate(-14deg);
     animation: ${anim} 15s infinite ease-in-out;
   }
   &:after {
-    margin-right: -45vw;
+    right: 20%;
     transform: rotate(12deg);
     animation: ${anim} 10s infinite ease-in-out;
   }
   @media (max-width: 580px) {
     &:before {
-      margin-left: -200px;
+      left: 10%;
     }
     &:after {
-      margin-right: -200px;
+      right: 10%;
     }
   }
 `;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import items, { getItemByKey } from '../items';
+import items, { getItemByKey, getSizeFromItem } from '../items';
 import Modal from '../Modal';
 import DetailView from '../DetailView';
 import withIsMobile from '../hoc/withIsMobile';
@@ -73,7 +73,7 @@ const ItemList = ({ isMobile }) => {
         <button key={item.key} onClick={handleClick(item.key)}>
           <img src={item.img} />
           <aside>
-            <h3>{item.title}</h3>
+            <h3>{item.title} ({getSizeFromItem(item)})</h3>
             <data data-type="usd">${item.price.usd}</data>
           </aside>
         </button>
