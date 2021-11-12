@@ -70,7 +70,6 @@ const BTCDetails = ({ title, message: messageFromProps }) => {
 
   const handleAddressInputlick = (e) => {
     e.stopPropagation();
-    e.target.select();
     const prompt = window.prompt('Copy the BTC address below', e.target.value);
     if (!prompt) {
       return;
