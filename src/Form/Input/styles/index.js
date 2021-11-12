@@ -92,6 +92,7 @@ export const LabelTextStyle = styled.span.attrs({className: 'LabelTextStyle'})`
 
 export const InputStyle = styled.input.attrs({className: 'InputStyle'})`
   ${ mixins.appearance('none') }
+  border-radius: 0;
   box-sizing: border-box;
   outline: none;
   padding: ${props => mixins.getComponentPaddingForStyleSize(props.styleSize, 'input', props) };
